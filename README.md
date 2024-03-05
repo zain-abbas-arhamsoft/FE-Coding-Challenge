@@ -1,2 +1,5 @@
 # FE-Coding-challenge
-FE Coding Challenge
+
+16.16.0
+npm i
+npm start
