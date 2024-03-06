@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactPaginate from 'react-paginate';
-import { useStyles } from './styles/profile.css'; // Import the styles
+import { useStyles } from '../../styles/profile.css'; // Import the styles
 
 interface PaginationProps {
     pageCount: number;
@@ -8,7 +8,7 @@ interface PaginationProps {
     onPageChange: (selectedItem: { selected: number }) => void;
 }
 
-const Pagination: React.FC<PaginationProps> = ({ pageCount, currentPage, onPageChange }) => {
+export const Pagination: React.FC<PaginationProps> = ({ pageCount, currentPage, onPageChange }) => {
     const classes = useStyles(); // Use the useStyles hook
 
     return (
