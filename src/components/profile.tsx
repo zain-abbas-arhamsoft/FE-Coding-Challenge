@@ -1,8 +1,10 @@
 import { Card, CardContent, CardHeader, Avatar, Typography, Grid, TextField } from '@material-ui/core';
 import PersonIcon from '@material-ui/icons/Person';
-import Pagination from './Pagination';
+import Pagination from './pagination';
 import { useState, useEffect } from 'react';
 import { useStyles } from './styles/profile.css';
+import { useProfileContext } from './context/profilecontext'; // Import the context
+import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
 
 interface ProfileCardProps {
     name: string;
@@ -12,6 +14,9 @@ interface ProfileCardProps {
 
 const ProfileCard: React.FC<{ count: number }> = ({ count }) => {
     const classes = useStyles();
+    const navigate = useNavigate(); // Initialize useNavigate
+
+    const { setProfile } = useProfileContext(); // Get the setProfile function from the context
     const [profiles, setProfiles] = useState<ProfileCardProps[]>([]);
     const [searchTerm, setSearchTerm] = useState<string>('');
     const [currentPage, setCurrentPage] = useState(0);
@@ -56,7 +61,10 @@ const ProfileCard: React.FC<{ count: number }> = ({ count }) => {
     const handlePageChange = (selectedItem: { selected: number }) => {
         setCurrentPage(selectedItem.selected);
     };
-
+    const handleCardClick = (profile: ProfileCardProps) => {
+        setProfile(profile.name, profile.email, profile.imageUrl); // Set the selected profile
+        navigate(`/profile/${profile.name}`); // Navigate to the profile detail page
+    };
     const renderCards = () => {
         const startIndex = currentPage * itemsPerPage;
         const endIndex = Math.min(startIndex + itemsPerPage, filteredProfiles.length);
@@ -65,7 +73,9 @@ const ProfileCard: React.FC<{ count: number }> = ({ count }) => {
             <Grid container spacing={2}>
                 {filteredProfiles.slice(startIndex, endIndex).map((profile, index) => (
                     <Grid item key={index} xs={12} sm={6} md={4} lg={4}>
-                        <Card className={classes.card}>
+                        <Card className={classes.card}
+                            onClick={() => handleCardClick(profile)} // Handle card click
+                        >
                             <CardHeader
                                 avatar={
                                     <Avatar className={classes.avatar} src={profile.imageUrl}>
