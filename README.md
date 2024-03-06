@@ -1,14 +1,14 @@
 # FE-Coding-challenge
 
-## Description
+# Description
 
 FE-Coding-challenge is a front-end coding challenge project aimed at demonstrating proficiency in a specific area of front-end development.
 
-## Requirements
+# Requirements
 
 - Node.js (version 18.15.0 recommended)
 
-## Installation
+# Installation
 
 1. Clone the repository:
 
