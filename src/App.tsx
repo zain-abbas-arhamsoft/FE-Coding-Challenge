@@ -6,7 +6,7 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
-          <Route path="/" element={<ProfileCard count={4} />} />
+          <Route path="/" element={<ProfileCard count={10} />} />
         </Routes>
       </div>
     </Router>
