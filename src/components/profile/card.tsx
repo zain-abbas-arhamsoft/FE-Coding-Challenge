@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Grid } from '@material-ui/core';
-import ProfileSearch from './profileSearch';
-import ProfileCardItem from './profileCardItem';
+import ProfileSearch from './search';
+import ProfileCardItem from './cardItem';
 import { Pagination } from './pagination/pagination';
 import { useProfileContext } from '../context/profileContext';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -87,10 +87,6 @@ const ProfileCard: React.FC<{ count: number }> = ({ count }) => {
         navigate(`?${urlSearchParams.toString()}`);
 
     };
-
-    // const handlePageChange = (selectedItem: { selected: number }) => {
-    //     // Update current page
-    // };
     const handlePageChange = (selectedItem: { selected: number }) => {
         setCurrentPage(selectedItem.selected);
     };

@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import ProfileCard from './components/profile/profileCard';
-import ProfileDetailPage from './components/profile/profileDetail';
+import ProfileCard from './components/profile/card';
+import ProfileDetailPage from './components/profile/detail';
 import { ProfileProvider } from './components/context/profileContext';
 
 function App() {
